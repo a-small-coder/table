@@ -1,0 +1,101 @@
+.section__card{
+
+}
+
+.page{
+    &._purple{
+        background-color: #7A7BDF;
+    }
+}
+
+.card{
+    margin-bottom: 40px;
+    // padding: 10px;
+    display: flex;
+    border-radius: 20px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+
+    &__image{
+        background-color: #2A265F;
+        min-height: 150px;
+        min-width: 200px;
+        border-radius: 20px;
+        border-top-right-radius:0;
+        border-bottom-right-radius:0;
+        box-sizing: border-box;
+        position: relative;
+        // padding-bottom: 56.2%;
+        // border: 1px solid black;
+        // margin: 20px;
+
+        img{
+            border-top-left-radius:20px;
+            border-bottom-left-radius:20px;
+        }
+    }
+
+    &__data{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+        flex: 1 0 200px;
+        background-color: #fff;
+        color: #000;
+        border-radius: 20px;
+        border-top-left-radius:0;
+        border-bottom-left-radius:0;
+        padding: 20px 40px;
+        
+    }
+
+    &__item{
+        padding: 10px;
+        margin-left: 0 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        span{
+            margin-bottom: 10px;
+            &.title{
+                font-weight: 600;
+                font-size: 18px;
+            }
+
+            a{
+                text-decoration: none;
+                color: #5951CA;
+                transition: all 0.3s ease;
+
+                &:hover{
+                    text-decoration: underline;
+                    color: #2A265F;
+                }
+            }
+        }
+    }
+}
+
+.data-items-comtainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.delete_button{
+    padding: 15px 30px;
+    background-color: #2A265F;
+    color: #fff;
+    text-align: center;
+    border-radius:30px;
+    width: 160px;
+    min-height: 40px;
+    justify-self: flex-end;
+}
+
+.button_container{
+    display: flex;
+    justify-content: flex-end;
+}

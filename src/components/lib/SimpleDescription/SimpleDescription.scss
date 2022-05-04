@@ -1,0 +1,19 @@
+@import "../../../variables";
+.simple-description{
+    padding: 15px 0px;
+    // border-bottom: 1px solid $supportControl;
+    max-width: 400px;
+    
+    
+    &__title{
+        font-weight: 600;
+        font-size: 18px;
+        margin-bottom: 10px;
+        text-transform: capitalize;
+    }
+
+    &__content{
+        opacity: 0.8;
+        padding-right: 10px;
+    }
+}
