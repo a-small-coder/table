@@ -1,11 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
 .section__card{
 
-}
-
-.page{
-    &._purple{
-        background-color: #7A7BDF;
-    }
 }
 
 .card{
@@ -14,6 +10,7 @@
     display: flex;
     border-radius: 20px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    font-family: 'Muli', sans-serif;
 
     &__image{
         background-color: #2A265F;
@@ -88,9 +85,11 @@
     padding: 15px 30px;
     background-color: #2A265F;
     color: #fff;
+    font-family: 'Muli', sans-serif;    
+    font-size: 14px;
     text-align: center;
     border-radius:30px;
-    width: 160px;
+    min-width: 160px;
     min-height: 40px;
     justify-self: flex-end;
 }

@@ -6,16 +6,25 @@ import Header from './components/Header/Header';
 import './styles.scss'
 import NoMatchPage from './components/NoMatchPage/NoMatchPage';
 import TablePage from './components/TablePage';
+import AuthPageBody from './components/Autorization/AuthPageContainer';
+import { useState } from 'react';
+import Exit from './components/Autorization/Exit';
 
 function App() {
+  const [isUserLogin, setIsUserLogin] = useState(true)
+
+  const setAuth = (data) =>{
+    setIsUserLogin(data)
+  }
   return (
     <BrowserRouter>
     <div className='wrapper'>
-      <Header/>
+      <Header auth={isUserLogin}/>
       <Routes>
-        {/* <Route path='/portfolio' element={<MainPage/>}></Route> */}
-        <Route path='/table' element={<TablePage/>}></Route>
-        <Route path="*" element={<NoMatchPage/>}></Route>
+        <Route path='/table' element={<TablePage auth={isUserLogin} />}></Route>
+        <Route path='/auth' element={<AuthPageBody auth={isUserLogin} setAuth={setIsUserLogin}/>}></Route>
+        <Route path='/exit' element={<Exit auth={isUserLogin} setAuth={setAuth}/>}></Route>
+        <Route path='*' element={<NoMatchPage/>}></Route>
       </Routes>
     </div>
       

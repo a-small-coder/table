@@ -26,7 +26,7 @@ function SimpleCard(props) {
 
                 
                 <button className='delete_button'>
-                    Удалить
+                    Взять в работу
                 </button>
                 </div>
             </div>

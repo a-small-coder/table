@@ -18,33 +18,31 @@ function Header(props) {
     }
     
 
-    const data = [
-        // {
-        //     id: 1,
-        //     title: "Главная",
-        //     link: "/portfolio"
-        // },
-        // {
-        //     id: 2,
-        //     title: "Резюме",
-        //     link: "/resume"
-        // },
-        // {
-        //     id: 3,
-        //     title: "Портфолио",
-        //     link: "/portfolio"
-        // },
-        // {
-        //     id: 4,
-        //     title: "Контакты",
-        //     link: "/contacts"
-        // },
+    const data = [        
         {
-            id: 5,
+            id: 1,
             title: "объявления",
             link: "/table"
         },
+        {
+            id: 2,
+            title: "Вход",
+            link: "/auth"
+        },
     ]
+
+    if (props.auth){
+        data[1] = {
+            id: 2,
+            title: "профиль",
+            link: "/profile"
+        }
+        data.push({
+            id: 3,
+            title: "выйти",
+            link: "/exit"
+        })
+    }
 
     const menuItems = data.map( el => (
         <NavItem key={el.id} link={el.link} wrapperClass="menu__item">{el.title}</NavItem>
@@ -58,7 +56,7 @@ function Header(props) {
         <div className='header'>
             <div className='header__container'>
                 <div className="header__logo">
-                    <Link to='/portfolio'>
+                    <Link to='/table'>
                         <Title 
                             type="heading" 
                             wrapperClass="header__logo_title"
