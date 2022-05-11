@@ -1,13 +1,10 @@
-import { connect } from 'react-redux';
 import React, { useEffect, useState } from 'react';
-// import { postApiRequest } from '../../support_functions/api_requests';
-// import { setIsAuthAC, setIsLoadingAC, setIsNeedRedirectAC, setUserDataAC } from '../../redux/auth-reducer';
 import '../../styles/Autorization/Autorization.scss';
 import '../../styles/Forms/Forms.scss';
-import LoadingSheme from '../SupportsComponents/LoadingSheme';
 import AuthFormControl from './AutorizationTypes/AuthFormControl';
 import { useNavigate } from 'react-router-dom';
-// import { setStorageUser, removeStorageUser } from '../../support_functions/utils';
+import { connect } from 'formik';
+import { setIsAuthAC, setIsLoadingAC, setIsNeedRedirectAC, setUserDataAC } from '../../redux/auth-reducer';
 
 const AuthPageBody = (props) =>{
 
@@ -16,9 +13,10 @@ const AuthPageBody = (props) =>{
     if (props.auth){
         return navigate("/table");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[props.auth]);
 
-    const [typeOfPage, setTypeOfPage] = useState('login')
+    const [typeOfPage, setTypeOfPage] = useState("login")
 
     function authUser (userdata, errorMessageSetter, errorFieldName, needRemember=false) {
         const loginUrl = "http://127.0.0.1:8000/auth/login"
@@ -98,4 +96,28 @@ const AuthPageBody = (props) =>{
     )
 }
 
+let mapStateToProps = (state)=>{
+    return {
+        Auth: state.auth,
+    }
+}
+let mapDispatchToProps = (dispatch)=>{
+    return{
+        setIsAuth: (isAuth) => {
+            dispatch(setIsAuthAC(isAuth));
+        },
+        setIsLoading: (isLoading) =>{
+            dispatch(setIsLoadingAC(isLoading));
+        },
+        setIsNeedRedirect: (isNeedRedirect) =>{
+            dispatch(setIsNeedRedirectAC(isNeedRedirect))
+        },
+        setUserData: (userData) => {
+            dispatch(setUserDataAC(userData))
+        }
+    }
+}
+const AuthPageContainer = connect(mapStateToProps, mapDispatchToProps)(AuthPageBody);
+
+// export default AuthPageContainer
 export default AuthPageBody

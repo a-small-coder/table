@@ -1,28 +1,20 @@
-import React, { useEffect } from 'react';
-import SimpleCard from './SimpleCard';
-import './SimpleCard.scss';
 import img from '../img/img.jpg';
 import img2 from '../img/img2.jpg';
 import img3 from '../img/img3.jpg';
 import img4 from '../img/img4.jpg';
-import { useNavigate } from 'react-router-dom';
 
-function TablePage(props) {
+const SET_IS_AUTH = "SET_IS_AUTH";
+const SET_IS_LOADING = "SET_IS_LOADING";
+const SET_IS_NEED_REDIRECT = "SET_IS_NEED_REDIRECT";
+const SET_USER_DATA = "SET_USER_DATA";
 
-    // status 1 - можно взять в работу
-    // status 2 - взято в работу другим менеджером
-    // status 3 - взято в работу текущим менеджером
 
-    let navigate = useNavigate();
 
-    useEffect(() => {
-    if (!props.auth){
-        return navigate("/auth");
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[props.auth]);
 
-    const data = [
+let initialState = {
+    current_page : 1,
+    page_size: false,
+    cards: [
         {
             id: 1,
             img_url: img,
@@ -64,22 +56,38 @@ function TablePage(props) {
             status: 1
         },
     ]
+    
+}
 
-    const cards = data.map( el => (
-        <SimpleCard key={el.id} data={el}/>
-    ))
-
-    return (
-        <div className='page _purple'>
-            <section className="section">
-
-                <div className='__container'>
-                    {cards}
-                </div>
-
-            </section>
-        </div>
-    );
+const authReducer = (state = initialState, action) =>{
+    switch (action.type){
+        case SET_IS_AUTH: {
+            
+            let stateCopy= {...state, isAuth: action.isAuth}
+            return stateCopy
+        }
+        case SET_IS_LOADING: {
+            
+            let stateCopy = {...state, isLoading: action.isLoading}
+            return stateCopy
+        }
+        case SET_IS_NEED_REDIRECT:{
+            
+            let stateCopy = {...state, isNeedRedirect: action.isNeedRedirect}
+            return stateCopy
+        }
+        case SET_USER_DATA: {
+            
+            let stateCopy = {...state, user: {...action.userData}}
+            return stateCopy
+        }
+        default: 
+            return state
     }
+}
 
-export default TablePage;
+export const setIsAuthAC = (isAuth) => ({type: SET_IS_AUTH, isAuth});
+export const setIsLoadingAC = (isLoading) => ({type: SET_IS_LOADING, isLoading});
+export const setIsNeedRedirectAC = (isNeedRedirect) => ({type: SET_IS_NEED_REDIRECT, isNeedRedirect});
+export const setUserDataAC = (userData) => ({type: SET_USER_DATA, userData})
+export default authReducer

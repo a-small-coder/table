@@ -5,14 +5,10 @@ import { Link } from 'react-router-dom';
 import FormikControl from '../BaseComponents/FormikControl';
 import ButtonsBlock from '../../SupportsComponents/ButtonsBlock';
 function LoginForm(props){
-    const checkBoxOptions = [
-        {key: 'Запомнить меня', value: 'rememberMe', chebox_value: false,},
-    ]
 
     const initialValues = {
         username: '',
         password: '',
-        // rememberMe: getInitValuesFromCheckboxData(checkBoxOptions),
     }
 
     const validation = Yup.object({
@@ -21,14 +17,13 @@ function LoginForm(props){
     })
 
     const onSubmit = (values, helpers) =>{
-        // values.rememberMe = values.rememberMe.length > 0
         props.handlerSubmit(values, helpers.setFieldError, 'password')
     }
 
     return (
         <Formik initialValues={initialValues} validationSchema={validation} onSubmit={onSubmit}>
             {
-                ({ values, errors, touched, isValid, handleBlur, handleChange}) => {
+                ({ errors, touched, isValid, handleBlur}) => {
                     
                     return (
                         <Form className="authForm loginForm" autoComplete="off" >

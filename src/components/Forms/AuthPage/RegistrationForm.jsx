@@ -1,7 +1,6 @@
 import React from 'react';
 import {Formik, Form} from 'formik';
 import * as Yup from 'yup'
-import { Link } from 'react-router-dom';
 import FormikControl from '../BaseComponents/FormikControl';
 import ButtonsBlock from '../../SupportsComponents/ButtonsBlock';
 function RegistrationForm(props){
@@ -31,7 +30,7 @@ function RegistrationForm(props){
     return (
         <Formik initialValues={initialValues} validationSchema={validation} onSubmit={onSubmit}>
             {
-                ({ values, errors, touched, isValid, handleBlur}) => {
+                ({ errors, touched, isValid, handleBlur}) => {
                     return (
                         <Form className="authForm registerForm" autoComplete="off">
                             <div className="authForm__form">

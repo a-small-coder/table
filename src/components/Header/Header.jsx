@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import NavItem from '../lib/NavItem/NavItem';
 import Title from '../lib/Title/Title';

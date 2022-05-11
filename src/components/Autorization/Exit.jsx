@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Exit(props) {
@@ -10,6 +10,7 @@ function Exit(props) {
         props.setAuth(false)
         return navigate("/auth");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[props.setAuth]);
 }
 
