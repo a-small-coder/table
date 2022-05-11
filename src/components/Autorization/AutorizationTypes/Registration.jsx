@@ -1,6 +1,6 @@
 import React from 'react';
 import RegistrationForm from '../../Forms/AuthPage/RegistrationForm';
-import TopBlockTitle from '../../SupportsComponents/TopBlockTitle';
+import TopBlockTitle from '../../lib/SupportsComponents/TopBlockTitle';
 
 const Registration =(props) =>{
 

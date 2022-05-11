@@ -1,84 +1,60 @@
-import img from '../img/img.jpg';
-import img2 from '../img/img2.jpg';
-import img3 from '../img/img3.jpg';
-import img4 from '../img/img4.jpg';
-
-const SET_IS_AUTH = "SET_IS_AUTH";
-const SET_IS_LOADING = "SET_IS_LOADING";
-const SET_IS_NEED_REDIRECT = "SET_IS_NEED_REDIRECT";
-const SET_USER_DATA = "SET_USER_DATA";
-
-
-
+const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+const SET_PAGE_SIZE = "SET_PAGE_SIZE";
+const SET_CARDS = "SET_CARDS";
+const REMOVE_CARD = "REMOVE_CARD";
+const ADD_CARDS = "ADD_CARDS";
+const SET_STATUS = "SET_STATUS"
 
 let initialState = {
     current_page : 1,
-    page_size: false,
-    cards: [
-        {
-            id: 1,
-            img_url: img,
-            number: '599777702',
-            reference: 'ttps://ss.ge/ru/%D0%BD%D0%B5%D0%B4%D0%B2%D0%B8%D0%B6%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C/%D0%BF%D1%80%D0%BE%D0%B4%D0%B0%D0%B5%D1%82%D1%81%D1%8F-%D0%B4%D0%B0%D1%87%D0%B0-%D0%B1%D0%B0%D0%BA%D1%83%D1%80%D0%B8%D0%B0%D0%BD%D0%B8-4508715',
-            date: '01.05.22 10:10',
-            status: 1
-        },
-        {
-            id: 2,
-            img_url: img2,
-            number: '599777702',
-            reference: 'https://ss.ge/ru/%D0%BD%D0%B5%D0%B4%D0%B2%D0%B8%D0%B6%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C/%D0%BF%D1%80%D0%BE%D0%B4%D0%B0%D0%B5%D1%82%D1%81%D1%8F-1-%D0%BA%D0%BE%D0%BC%D0%BD%D0%B0%D1%82%D0%BD%D0%B0%D1%8F-%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B8%D1%80%D0%B0-%D0%B1%D0%B0%D0%BA%D1%83%D1%80%D0%B8%D0%B0%D0%BD%D0%B8-4676736',
-            date: '01.05.22 10:11',
-            status: 1
-        },
-        {
-            id: 3,
-            img_url: img3,
-            number: '599777704',
-            reference: 'https://ss.ge/ru/%D0%BD%D0%B5%D0%B4%D0%B2%D0%B8%D0%B6%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C/%D0%BF%D1%80%D0%BE%D0%B4%D0%B0%D0%B5%D1%82%D1%81%D1%8F-%D0%B4%D0%B0%D1%87%D0%B0-%D0%B1%D0%B0%D0%BA%D1%83%D1%80%D0%B8%D0%B0%D0%BD%D0%B8-4508758',
-            date: '01.05.22 10:13',
-            status: 1
-        },
-        {
-            id: 4,
-            img_url: img4,
-            number: '599763702',
-            reference: 'https://ss.ge/ru/%D0%BD%D0%B5%D0%B4%D0%B2%D0%B8%D0%B6%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C/%D0%B0%D1%80%D0%B5%D0%BD%D0%B4%D0%B0--%D0%B7%D0%B0-%D0%B4%D0%B5%D0%BD%D1%8C-%D0%B4%D0%BE%D0%BC-%D0%B1%D0%BE%D1%80%D0%B6%D0%BE%D0%BC%D0%B8-4974075',
-            date: '01.05.22 10:13',
-            status: 1
-        },
-        {
-            id: 5,
-            img_url: img4,
-            number: '594627702',
-            reference: 'https://ss.ge/ru/%D0%BD%D0%B5%D0%B4%D0%B2%D0%B8%D0%B6%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C/%D0%B0%D1%80%D0%B5%D0%BD%D0%B4%D0%B0--%D0%B7%D0%B0-%D0%B4%D0%B5%D0%BD%D1%8C-%D0%B4%D0%B0%D1%87%D0%B0-%D1%86%D0%B5%D0%BC%D0%B8-4973967',
-            date: '01.05.22 10:14',
-            status: 1
-        },
-    ]
+    page_size: 5,
+    cards: []
     
 }
 
-const authReducer = (state = initialState, action) =>{
+const cardsReducer = (state = initialState, action) =>{
     switch (action.type){
-        case SET_IS_AUTH: {
+        case SET_CURRENT_PAGE: {
             
-            let stateCopy= {...state, isAuth: action.isAuth}
+            let stateCopy= {...state, current_page: action.page}
             return stateCopy
         }
-        case SET_IS_LOADING: {
+        case SET_PAGE_SIZE: {
             
-            let stateCopy = {...state, isLoading: action.isLoading}
+            let stateCopy = {...state, page_size: action.page_size}
             return stateCopy
         }
-        case SET_IS_NEED_REDIRECT:{
+        case SET_CARDS:{
             
-            let stateCopy = {...state, isNeedRedirect: action.isNeedRedirect}
+            let stateCopy = {...state}
+            stateCopy.cards = action.cards.map( card => (card))
             return stateCopy
         }
-        case SET_USER_DATA: {
+        case ADD_CARDS:{
             
-            let stateCopy = {...state, user: {...action.userData}}
+            let stateCopy = {...state}
+            stateCopy.cards = [...stateCopy.cards, ...action.cards]
+            return stateCopy
+        }
+        case REMOVE_CARD: {
+            
+            let stateCopy = {...state }
+            stateCopy.cards = stateCopy.cards.map( card => {
+                if (card.id !== action.id){
+                    return card
+                }
+            })
+            return stateCopy
+        }
+        case SET_STATUS: {
+            
+            let stateCopy = {...state }
+            stateCopy.cards = stateCopy.cards.map( card => {
+                if (card.id === action.id){
+                    card.status = action.status
+                }
+                return card
+            })
             return stateCopy
         }
         default: 
@@ -86,8 +62,10 @@ const authReducer = (state = initialState, action) =>{
     }
 }
 
-export const setIsAuthAC = (isAuth) => ({type: SET_IS_AUTH, isAuth});
-export const setIsLoadingAC = (isLoading) => ({type: SET_IS_LOADING, isLoading});
-export const setIsNeedRedirectAC = (isNeedRedirect) => ({type: SET_IS_NEED_REDIRECT, isNeedRedirect});
-export const setUserDataAC = (userData) => ({type: SET_USER_DATA, userData})
-export default authReducer
+export const setCurrentpageAC = (page) => ({type: SET_CURRENT_PAGE, page});
+export const setPageSizeAC = (page_size) => ({type: SET_PAGE_SIZE, page_size});
+export const setCardsAC = (cards) => ({type: SET_CARDS, cards});
+export const addCardsAC = (cards) => ({type: ADD_CARDS, cards});
+export const setRemoveCardAC = (id) => ({type: REMOVE_CARD, id});
+export const setStatusAC = (id, status) => ({type: SET_STATUS, id, status})
+export default cardsReducer

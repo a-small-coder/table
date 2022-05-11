@@ -3,18 +3,18 @@ import '../../styles/Autorization/Autorization.scss';
 import '../../styles/Forms/Forms.scss';
 import AuthFormControl from './AutorizationTypes/AuthFormControl';
 import { useNavigate } from 'react-router-dom';
-import { connect } from 'formik';
 import { setIsAuthAC, setIsLoadingAC, setIsNeedRedirectAC, setUserDataAC } from '../../redux/auth-reducer';
+import { connect } from 'react-redux';
 
 const AuthPageBody = (props) =>{
 
     let navigate = useNavigate();
     useEffect(() => {
-    if (props.auth){
+    if (props.auth.isAuth){
         return navigate("/table");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[props.auth]);
+    },[props.auth.isAuth]);
 
     const [typeOfPage, setTypeOfPage] = useState("login")
 
@@ -48,15 +48,13 @@ const AuthPageBody = (props) =>{
     }
 
     const onSubmitLoginForm = (formData, errorMessageSetter, errorFieldName) =>{
-        debugger
         console.log("Form data", formData)
         const userData = JSON.stringify(formData)
         authUser(userData, errorMessageSetter, errorFieldName, formData.rememberMe)
-        props.setAuth(true)
+        props.setIsAuth(true)
 
     }
     const onSubmitRegisterForm = (formData, errorMessageSetter, errorFieldName) =>{
-        debugger
         console.log("Form data", formData)
         const loginUrl = "http://127.0.0.1:8000/api/auth/register_user/"
         const userData = JSON.stringify(formData)
@@ -77,7 +75,7 @@ const AuthPageBody = (props) =>{
         }
         
         // postApiRequest(loginUrl, userData, goodResponseHandler, badResponseHandler)
-        props.setAuth(true)
+        props.setIsAuth(true)
     }
     return (
         <main className="page">
@@ -98,7 +96,7 @@ const AuthPageBody = (props) =>{
 
 let mapStateToProps = (state)=>{
     return {
-        Auth: state.auth,
+        auth: state.auth,
     }
 }
 let mapDispatchToProps = (dispatch)=>{
@@ -119,5 +117,4 @@ let mapDispatchToProps = (dispatch)=>{
 }
 const AuthPageContainer = connect(mapStateToProps, mapDispatchToProps)(AuthPageBody);
 
-// export default AuthPageContainer
-export default AuthPageBody
+export default AuthPageContainer

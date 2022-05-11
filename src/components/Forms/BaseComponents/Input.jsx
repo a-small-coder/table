@@ -14,15 +14,15 @@ const Input = (props) =>{
     const onPasswordFieldIconClick = (e) => {
         if (inputType === 'password'){
             setInputType('text')
-            setInputIconClass("input__rigth-icon _active _icon-search")
+            setInputIconClass("input__rigth-icon _active _icon-eye-blocked")
         }
         else{
             setInputType('password')
-            setInputIconClass("input__rigth-icon _icon-search")
+            setInputIconClass("input__rigth-icon _icon-eye")
         }
     }
 
-    const [inputIconClass, setInputIconClass] = useState("input__rigth-icon _icon-search")
+    const [inputIconClass, setInputIconClass] = useState("input__rigth-icon _icon-eye")
     const [labelClass, setLabelClass] = useState("input__label ")
     const [inputClass, setInputClass] = useState("input__field ")
     const [inputPlaceholder, setInputPlaceholder] = useState(placeholder)

@@ -1,7 +1,7 @@
 @use "sass:math";
 
-@import '../../variables';
-@import '../../mixins';
+@import '../../styles/variables';
+@import '../../styles/mixins';
 
 $mobileWidth: 767.98px;
 
@@ -15,10 +15,6 @@ $mobileWidth: 767.98px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
-
-    &__menu{
-
     }
 
     &__logo{
@@ -80,10 +76,6 @@ $mobileWidth: 767.98px;
 		.menu-open & {
 			span {
 				width: 0;
-			}
-			&::before,
-			&::after {
-
 			}
 			&::before {
 				top: calc(50% - rem(1));

@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 
 .section__card{
-
+    &._in-work{
+        opacity: 0.5;
+    }
 }
 
 .card{
@@ -15,7 +17,7 @@
     &__image{
         background-color: #2A265F;
         min-height: 150px;
-        min-width: 200px;
+        min-width: 350px;
         border-radius: 20px;
         border-top-right-radius:0;
         border-bottom-right-radius:0;
@@ -48,17 +50,32 @@
 
     &__item{
         padding: 10px;
-        margin-left: 0 10px;
+        margin-left: 10px;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
 
         span{
             margin-bottom: 10px;
             &.title{
+                font-size: 14px;
+                color: #252525;
+                display: block;
+                float: left;
                 font-weight: 600;
-                font-size: 18px;
+                line-height: 1.66;
+                text-transform: uppercase;
             }
+
+            &.item {
+                display: block;
+                padding-left: 130px;
+
+                &_link{
+                    padding-left: 35px;
+                }
+            }
+            
 
             a{
                 text-decoration: none;
@@ -76,8 +93,8 @@
 
 .data-items-comtainer{
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: space-between;
 }
 
@@ -92,6 +109,10 @@
     min-width: 160px;
     min-height: 40px;
     justify-self: flex-end;
+
+    &:hover{
+        background-color: #3E398E;
+    }
 }
 
 .button_container{

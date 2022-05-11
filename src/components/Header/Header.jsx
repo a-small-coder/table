@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import NavItem from '../lib/NavItem/NavItem';
 import Title from '../lib/Title/Title';
+import { connect } from 'react-redux';
 
 import './Header.scss';
 
@@ -31,17 +32,18 @@ function Header(props) {
         },
     ]
 
-    if (props.auth){
+    if (props.auth.isAuth){
         data[1] = {
-            id: 2,
-            title: "профиль",
-            link: "/profile"
-        }
-        data.push({
             id: 3,
             title: "выйти",
             link: "/exit"
-        })
+            
+        }
+        // data.push({
+        //     id: 2,
+        //     title: "профиль",
+        //     link: "/profile"
+        // })
     }
 
     const menuItems = data.map( el => (
@@ -94,4 +96,16 @@ function Header(props) {
     );
 }
 
-export default Header;
+let mapStateToProps = (state)=>{
+    return {
+        auth: state.auth,
+    }
+}
+let mapDispatchToProps = (dispatch)=>{
+    return{
+
+    }
+}
+const HeaderContainer = connect(mapStateToProps, mapDispatchToProps)(Header);
+
+export default HeaderContainer

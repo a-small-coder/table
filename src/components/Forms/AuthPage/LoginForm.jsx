@@ -1,9 +1,8 @@
 import React from 'react';
 import {Formik, Form} from 'formik';
 import * as Yup from 'yup'
-import { Link } from 'react-router-dom';
 import FormikControl from '../BaseComponents/FormikControl';
-import ButtonsBlock from '../../SupportsComponents/ButtonsBlock';
+import ButtonsBlock from '../../lib/SupportsComponents/ButtonsBlock';
 function LoginForm(props){
 
     const initialValues = {
@@ -49,12 +48,6 @@ function LoginForm(props){
                                     isError={errors.password && touched.password}
                                 />
                                 
-                                <Link 
-                                    to="/restore-password" 
-                                    className="authForm__password-link  _text-link _icon-search"
-                                >
-                                    <span>Забыли пароль?</span>
-                                </Link>
                             </div>
                             <ButtonsBlock 
                                 isFormValid={isValid} 

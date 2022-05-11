@@ -2,7 +2,7 @@ import React from 'react';
 import {Formik, Form} from 'formik';
 import * as Yup from 'yup'
 import FormikControl from '../BaseComponents/FormikControl';
-import ButtonsBlock from '../../SupportsComponents/ButtonsBlock';
+import ButtonsBlock from '../../lib/SupportsComponents/ButtonsBlock';
 function RegistrationForm(props){
 
     const initialValues = {
